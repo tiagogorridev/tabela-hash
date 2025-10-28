@@ -40,6 +40,7 @@ public class Main {
         System.out.println("---------------------------------------------------");
         System.out.println("Total de elementos inseridos: " + tabela.getTotalElementos());
         System.out.println("Numero total de colisoes: " + tabela.getNumeroColisoes());
+        System.out.println("Fator de carga: " + String.format("%.3f", tabela.getLoadFactor()));
         System.out.println("Tempo de insercao: " + (tempoInsercao / 1_000_000.0) + " ms");
         System.out.println("Tempo de busca: " + (tempoBusca / 1_000_000.0) + " ms");
         
