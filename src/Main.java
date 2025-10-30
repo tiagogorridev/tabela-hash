@@ -77,11 +77,39 @@ public class Main {
         long tempoRemocao2 = testarRemocoes(tabela2, nomes);
         System.out.println("Testes de remocao concluidos!");
         
+        PrintUtils.imprimirTitulo("RESUMO FORMATADO");
+        PrintUtils.printResumo(tabela1, tempoInsercao1, tempoBusca1, tempoRemocao1);
+        System.out.println();
+        PrintUtils.printResumo(tabela2, tempoInsercao2, tempoBusca2, tempoRemocao2);
+
         PrintUtils.imprimirTitulo("RELATORIO FINAL - RESULTADOS COMPARATIVOS");
         
         PrintUtils.imprimirRelatorioTabela(tabela1, tempoInsercao1, tempoBusca1);
         System.out.println();
         PrintUtils.imprimirRelatorioTabela(tabela2, tempoInsercao2, tempoBusca2);
+
+        // Busca de nomes especificos com posicao
+        System.out.println();
+        System.out.println("[ETAPA 7] Buscando nomes especificos com posicao...");
+        String primeiro = nomes.get(0);
+        String meio = nomes.get(nomes.getTamanho() / 2);
+        String ultimo = nomes.get(nomes.getTamanho() - 1);
+        String inexistente = "NOME_INEXISTENTE_123";
+        String[] chavesBusca = new String[] { primeiro, meio, ultimo, inexistente };
+        PrintUtils.imprimirBuscasComPosicao(tabela1, chavesBusca);
+        PrintUtils.imprimirBuscasComPosicao(tabela2, chavesBusca);
+
+        // Busca com contadores de acesso
+        System.out.println();
+        System.out.println("[ETAPA 8] Busca com contadores de acesso...");
+        PrintUtils.imprimirBuscasComAcessos(tabela1, chavesBusca);
+        PrintUtils.imprimirBuscasComAcessos(tabela2, chavesBusca);
+
+        // Busca detalhada com DTO
+        System.out.println();
+        System.out.println("[ETAPA 9] Busca com informacoes detalhadas...");
+        PrintUtils.imprimirBuscasDetalhadas(tabela1, chavesBusca);
+        PrintUtils.imprimirBuscasDetalhadas(tabela2, chavesBusca);
         PrintUtils.imprimirTitulo("COMPARACAO DIRETA");
 
         System.out.printf("""
@@ -89,6 +117,9 @@ public class Main {
                 Tabela 1: %s
                 Tabela 2: %s
                 Diferenca: %s
+                Fator de Carga:
+                Tabela 1: %s
+                Tabela 2: %s
                 Tempo de Insercao:
                 Tabela 1: %s ms
                 Tabela 2: %s ms
@@ -102,6 +133,8 @@ public class Main {
             tabela1.getNumeroColisoes(), 
             tabela2.getNumeroColisoes(), 
             (Math.abs(tabela1.getNumeroColisoes() - tabela2.getNumeroColisoes())),
+            String.format("%.4f", tabela1.getFatorCarga()),
+            String.format("%.4f", tabela2.getFatorCarga()),
             (tempoInsercao1 / 1_000_000.0),
             (tempoInsercao2 / 1_000_000.0),
             (tempoBusca1 / 1_000_000.0),

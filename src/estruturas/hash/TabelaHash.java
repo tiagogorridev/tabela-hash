@@ -60,6 +60,38 @@ public abstract class TabelaHash {
     
     public String getNomeFuncaoHash() { return nomeFuncaoHash; }
     
+    public double getFatorCarga() {
+        return totalElementos / (double) CAPACIDADE;
+    }
+
+    public int[] buscarComPosicao(String chave) {
+        int indice = funcaoHash(chave);
+        int posLista = tabela[indice].indiceDe(chave);
+        if (posLista == -1) return new int[] { -1, -1 };
+        return new int[] { indice, posLista };
+    }
+
+    public int[] buscarComAcessos(String chave) {
+        int indice = funcaoHash(chave);
+        int[] acessosEEncontrado = tabela[indice].contarAcessosEEncontrado(chave);
+        // Retorna: [bucketIndex, acessosNaLista, encontrado(1|0)]
+        return new int[] { indice, acessosEEncontrado[0], acessosEEncontrado[1] };
+    }
+
+    public BuscaDetalhada buscarDetalhado(String chave) {
+        int indice = funcaoHash(chave);
+        int[] acessosEEncontrado = tabela[indice].contarAcessosEEncontrado(chave);
+        int posLista = tabela[indice].indiceDe(chave);
+        boolean encontrado = acessosEEncontrado[1] == 1;
+        return new BuscaDetalhada(
+            chave,
+            encontrado,
+            indice,
+            encontrado ? posLista : -1,
+            acessosEEncontrado[0]
+        );
+    }
+    
     public int[] getDistribuicao() {
     
         int[] distribuicao = new int[CAPACIDADE];

@@ -69,4 +69,30 @@ public class ListaEncadeada {
         }
         return atual.dado;
     }
+
+    public int indiceDe(String dado) {
+        No atual = inicio;
+        int indice = 0;
+        while (atual != null) {
+            if (atual.dado.equals(dado)) {
+                return indice;
+            }
+            atual = atual.proximo;
+            indice++;
+        }
+        return -1;
+    }
+
+    public int[] contarAcessosEEncontrado(String dado) {
+        No atual = inicio;
+        int acessos = 0;
+        while (atual != null) {
+            acessos++;
+            if (atual.dado.equals(dado)) {
+                return new int[] { acessos, 1 };
+            }
+            atual = atual.proximo;
+        }
+        return new int[] { acessos, 0 };
+    }
 }
