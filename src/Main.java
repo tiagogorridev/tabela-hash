@@ -105,7 +105,7 @@ public class Main {
             (tempoInsercao1 / 1_000_000.0),
             (tempoInsercao2 / 1_000_000.0),
             (tempoBusca1 / 1_000_000.0),
-            (tempoBusca1 / 1_000_000.0),
+            (tempoBusca2 / 1_000_000.0),
             (tempoRemocao1 / 1_000_000.0),
             (tempoRemocao2 / 1_000_000.0)
         );
