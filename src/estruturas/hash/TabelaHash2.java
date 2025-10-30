@@ -1,3 +1,5 @@
+package src.estruturas.hash;
+
 public class TabelaHash2 extends TabelaHash {
     
     public TabelaHash2() { super("Funcao Hash 2: Chave % Tamanho"); }

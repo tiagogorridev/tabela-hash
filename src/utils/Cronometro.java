@@ -1,3 +1,4 @@
+package src.utils;
 public class Cronometro {
     private long tempoInicio;
     

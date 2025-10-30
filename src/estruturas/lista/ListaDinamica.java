@@ -1,3 +1,5 @@
+package src.estruturas.lista;
+
 public class ListaDinamica {
     private String[] elementos;
     private int tamanho;

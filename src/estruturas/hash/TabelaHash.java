@@ -1,3 +1,7 @@
+package src.estruturas.hash;
+
+import src.estruturas.lista.ListaEncadeada;
+
 public abstract class TabelaHash {
     protected static final int CAPACIDADE = 32;
     protected ListaEncadeada[] tabela;
@@ -5,40 +9,45 @@ public abstract class TabelaHash {
     protected int numeroColisoes;
     protected String nomeFuncaoHash;
     
-    public TabelaHash(String nomeFuncaoHash) {
+    public TabelaHash(String nomeFuncHash) {
+
         tabela = new ListaEncadeada[CAPACIDADE];
+
         for (int i = 0; i < CAPACIDADE; i++) {
             tabela[i] = new ListaEncadeada();
         }
+        
         totalElementos = 0;
         numeroColisoes = 0;
-        this.nomeFuncaoHash = nomeFuncaoHash;
+        this.nomeFuncaoHash = nomeFuncHash;
+
     }
     
     protected abstract int funcaoHash(String chave);
     
     public void inserir(String chave) {
+
         int indice = funcaoHash(chave);
         
-        if (tabela[indice].getTamanho() > 0) {
-            numeroColisoes++;
-        }
+        if (tabela[indice].getTamanho() > 0) numeroColisoes++;
         
         tabela[indice].adicionar(chave);
         totalElementos++;
+
     }
     
     public boolean buscar(String chave) {
-        int indice = funcaoHash(chave);
-        return tabela[indice].contem(chave);
+        return tabela[funcaoHash(chave)].contem(chave);
     }
     
     public boolean remover(String chave) {
-        int indice = funcaoHash(chave);
-        boolean removido = tabela[indice].remover(chave);
+
+        boolean removido = tabela[funcaoHash(chave)].remover(chave);
         
-        if (removido) { totalElementos--; }
+        if (removido) totalElementos--;
+
         return removido;
+        
     }
     
     public int getTotalElementos() { return totalElementos; }
@@ -52,10 +61,17 @@ public abstract class TabelaHash {
     public String getNomeFuncaoHash() { return nomeFuncaoHash; }
     
     public int[] getDistribuicao() {
+    
         int[] distribuicao = new int[CAPACIDADE];
+
         for (int i = 0; i < CAPACIDADE; i++) {
+        
             distribuicao[i] = tabela[i].getTamanho();
+        
         }
+        
         return distribuicao;
+    
     }
+
 }

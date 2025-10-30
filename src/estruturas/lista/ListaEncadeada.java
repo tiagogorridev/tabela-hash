@@ -1,3 +1,5 @@
+package src.estruturas.lista;
+
 public class ListaEncadeada {
     No inicio;
     int tamanho;
