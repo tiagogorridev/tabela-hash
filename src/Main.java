@@ -21,7 +21,7 @@ public class Main {
 
         System.out.printf("""
                 Total de nomes lidos: %s
-                [ETAPA 2] Criando tabelas hash...
+                \n[ETAPA 2] Criando tabelas hash...
         """, nomes.getTamanho());
 
         TabelaHash tabela1 = new TabelaHash1();
@@ -30,7 +30,7 @@ public class Main {
         System.out.printf("""
                 Capacidade de cada tabela: %s
                 Metodo de tratamento de colisoes: Encadeamento Exterior
-                [ETAPA 3] Inserindo nomes na Tabela 1...
+                \n[ETAPA 3] Inserindo nomes na Tabela 1...
         """, tabela1.getCapacidade());
         
         Cronometro cronometro1 = new Cronometro();
@@ -45,7 +45,7 @@ public class Main {
         System.out.println("""
                 Insercao concluida!
 
-                [ETAPA 4] Inserindo nomes na Tabela 2...
+                \n[ETAPA 4] Inserindo nomes na Tabela 2...
         """);
 
         Cronometro cronometro2 = new Cronometro();
@@ -59,7 +59,7 @@ public class Main {
         System.out.println("""
                 Insercao concluida!
 
-                [ETAPA 5] Realizando testes de busca...
+                \n[ETAPA 5] Realizando testes de busca...
         """);
 
         long tempoBusca1 = testarBuscas(tabela1, nomes);
@@ -68,24 +68,32 @@ public class Main {
         System.out.println("""
                 Testes de busca concluidos!
 
-                [ETAPA 6] Realizando testes de remocao...
-                Tabela 1:
+                \n[ETAPA 6] Realizando testes de remocao...
+                \nTabela 1:
         """);
 
         long tempoRemocao1 = testarRemocoes(tabela1, nomes);
-        System.out.println("Tabela 2:");
+
+        System.out.println("\nTabela 2:");
+        
         long tempoRemocao2 = testarRemocoes(tabela2, nomes);
-        System.out.println("Testes de remocao concluidos!");
+        
+        System.out.println("\nTestes de remocao concluidos!");
         
         PrintUtils.imprimirTitulo("RESUMO FORMATADO");
+        
         PrintUtils.printResumo(tabela1, tempoInsercao1, tempoBusca1, tempoRemocao1);
+        
         System.out.println();
+        
         PrintUtils.printResumo(tabela2, tempoInsercao2, tempoBusca2, tempoRemocao2);
 
         PrintUtils.imprimirTitulo("RELATORIO FINAL - RESULTADOS COMPARATIVOS");
         
         PrintUtils.imprimirRelatorioTabela(tabela1, tempoInsercao1, tempoBusca1);
+        
         System.out.println();
+        
         PrintUtils.imprimirRelatorioTabela(tabela2, tempoInsercao2, tempoBusca2);
 
         // Busca de nomes especificos com posicao
@@ -117,10 +125,10 @@ public class Main {
                 Tabela 1: %s
                 Tabela 2: %s
                 Diferenca: %s
-                Fator de Carga:
+                \nFator de Carga:
                 Tabela 1: %s
                 Tabela 2: %s
-                Tempo de Insercao:
+                \nTempo de Insercao:
                 Tabela 1: %s ms
                 Tabela 2: %s ms
                 \nTempo de Busca:
