@@ -56,8 +56,16 @@ public abstract class TabelaHash {
     
     public ListaEncadeada getLista(int indice) { return tabela[indice]; }
     
-    public int getNumeroColisoes() { return numeroColisoes; }
-    
+    public int getNumeroColisoes() {
+        int colisoes = 0;
+        for (int i = 0; i < CAPACIDADE; i++) {
+            int tamanho = tabela[i].getTamanho();
+            if (tamanho > 1) {
+                colisoes += (tamanho - 1);
+            }
+        }
+        return colisoes;
+    }    
     public String getNomeFuncaoHash() { return nomeFuncaoHash; }
     
     public double getFatorCarga() {
