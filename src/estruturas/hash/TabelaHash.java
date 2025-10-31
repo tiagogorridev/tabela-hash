@@ -82,7 +82,6 @@ public abstract class TabelaHash {
     public int[] buscarComAcessos(String chave) {
         int indice = funcaoHash(chave);
         int[] acessosEEncontrado = tabela[indice].contarAcessosEEncontrado(chave);
-        // Retorna: [bucketIndex, acessosNaLista, encontrado(1|0)]
         return new int[] { indice, acessosEEncontrado[0], acessosEEncontrado[1] };
     }
 

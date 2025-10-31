@@ -96,7 +96,6 @@ public class Main {
         
         PrintUtils.imprimirRelatorioTabela(tabela2, tempoInsercao2, tempoBusca2);
 
-        // Busca de nomes especificos com posicao
         System.out.println();
         System.out.println("[ETAPA 7] Buscando nomes especificos com posicao...");
         String primeiro = nomes.get(0);
@@ -107,13 +106,11 @@ public class Main {
         PrintUtils.imprimirBuscasComPosicao(tabela1, chavesBusca);
         PrintUtils.imprimirBuscasComPosicao(tabela2, chavesBusca);
 
-        // Busca com contadores de acesso
         System.out.println();
         System.out.println("[ETAPA 8] Busca com contadores de acesso...");
         PrintUtils.imprimirBuscasComAcessos(tabela1, chavesBusca);
         PrintUtils.imprimirBuscasComAcessos(tabela2, chavesBusca);
 
-        // Busca detalhada com DTO
         System.out.println();
         System.out.println("[ETAPA 9] Busca com informacoes detalhadas...");
         PrintUtils.imprimirBuscasDetalhadas(tabela1, chavesBusca);
